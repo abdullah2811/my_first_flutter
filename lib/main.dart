@@ -4,6 +4,18 @@ void main() {
   runApp(const MyApp());
 }
 
+int number = 42;
+double decimalNumber = 3.14;
+String greeting = "Hello, Flutter!";
+bool isFlutterFun = true;
+List<String> fruits = ["Apple", "Banana", "Cherry"];
+Map<String, dynamic> ages = {
+  "Alice": 30,
+  "Bob": "Twenty-Five",
+  "Charlie": 35.6,
+};
+Set<String> uniqueNames = {"Alice", "Bob", "Charlie"};
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -11,6 +23,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         // This is the theme of your application.
@@ -28,9 +41,13 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: Colors.lightGreenAccent,
+          brightness: Brightness.dark,
+        ),
+        useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(title: 'My First Flutter App'),
     );
   }
 }
@@ -86,36 +103,67 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+        child: Container(
+          // Center is a layout widget. It takes a single child and positions it
+          // in the middle of the parent.
+          color: Colors.lime,
+          height: 80,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                alignment: Alignment.center,
+                width: 200,
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.redAccent,
+                ),
+                child: Text(
+                  'Red Pill',
+                  style: TextStyle(fontSize: 24, color: Colors.white),
+                ),
+              ),
+              Image.asset(
+                'assets/images/pills.jpg',
+                height: 95,
+                width: 150,
+                fit: BoxFit.cover,
+              ),
+              Container(
+                alignment: Alignment.center,
+                width: 200,
+                height: 50,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: Colors.blueAccent,
+                ),
+                child: Text(
+                  'Blue Pill',
+                  style: TextStyle(fontSize: 24, color: Colors.white),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: _incrementCounter,
+            tooltip: 'Increment',
+            child: const Icon(Icons.add),
+          ),
+          SizedBox(width: 16),
+          FloatingActionButton(
+            onPressed: () {
+              // Your second action here
+            },
+            tooltip: 'Decrement',
+            child: const Icon(Icons.remove),
+          ),
+        ],
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
