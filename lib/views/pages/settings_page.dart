@@ -1,15 +1,62 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/data/notifiers.dart';
 
-class SettingsPage extends StatelessWidget {
+class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
   @override
+  State<SettingsPage> createState() => _SettingsPageState();
+}
+
+class _SettingsPageState extends State<SettingsPage> {
+  double sliderValue = 0.5;
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        'Adjust your settings here!',
-        style: Theme.of(context).textTheme.headlineMedium,
-      ),
+    return ValueListenableBuilder<bool>(
+      valueListenable: isDarkModeNotifier,
+      builder: (context, isDarkMode, child) {
+        return ValueListenableBuilder<bool>(
+          valueListenable: userVerifiedNotifier,
+          builder: (context, isVerified, child) {
+            return Scaffold(
+              body: Column(
+                children: [
+                  Text(
+                    'Adjust your settings here!',
+                    style: Theme.of(context).textTheme.headlineMedium,
+                  ),
+                  SwitchListTile(
+                    title: Text('Dark Mode Enabled'),
+                    value: isDarkMode,
+                    onChanged: (bool? value) {
+                      isDarkModeNotifier.value = value ?? false;
+                    },
+                  ),
+                  CheckboxListTile(
+                    title: Text('User is Verified'),
+                    value: isVerified,
+                    onChanged: (bool? value) {
+                      userVerifiedNotifier.value = value ?? false;
+                    },
+                  ),
+                  Slider.adaptive(
+                    value: sliderValue,
+                    onChanged: (double value) {
+                      setState(() {
+                        sliderValue = value;
+                      });
+                    },
+                    min: 0,
+                    max: 1,
+                    divisions: 10,
+                    label: 'Rate Our App ${(sliderValue * 10).round()}',
+                  ),
+                ],
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
