@@ -78,24 +78,24 @@ class WidgetTree extends StatelessWidget {
                 ],
               ),
             ),
-            floatingActionButton: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                FloatingActionButton(
-                  onPressed: () {
-                    // Action when button is pressed
-                  },
-                  child: Icon(Icons.add),
-                ),
-                SizedBox(width: 10), // Space between buttons
-                FloatingActionButton(
-                  onPressed: () {
-                    // Action when button is pressed
-                  },
-                  child: Icon(Icons.remove),
-                ),
-              ],
-            ),
+            // floatingActionButton: Row(
+            //   mainAxisSize: MainAxisSize.min,
+            //   children: [
+            //     FloatingActionButton(
+            //       onPressed: () {
+            //         // Action when button is pressed
+            //       },
+            //       child: Icon(Icons.add),
+            //     ),
+            //     SizedBox(width: 10), // Space between buttons
+            //     FloatingActionButton(
+            //       onPressed: () {
+            //         // Action when button is pressed
+            //       },
+            //       child: Icon(Icons.remove),
+            //     ),
+            //   ],
+            // ),
             body: ValueListenableBuilder(
               valueListenable: selectedPageNotifier,
               builder:
