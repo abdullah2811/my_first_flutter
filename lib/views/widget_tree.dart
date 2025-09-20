@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_first_flutter/data/notifiers.dart';
+import 'package:my_first_flutter/views/pages/exit_page.dart';
 import 'package:my_first_flutter/views/pages/home_page.dart';
 import 'package:my_first_flutter/views/pages/profile_page.dart';
 import 'package:my_first_flutter/views/pages/settings_page.dart';
@@ -36,8 +37,20 @@ class WidgetTree extends StatelessWidget {
                         icon: Icon(Icons.dark_mode),
                       ),
                 SizedBox(width: 30),
-                Icon(Icons.exit_to_app),
-                Text('Exit  '),
+                IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return ExitPage(username: "Abdullah");
+                        },
+                      ),
+                    );
+                  },
+                  icon: Icon(Icons.exit_to_app),
+                ),
+                SizedBox(width: 10),
               ],
               backgroundColor: Colors.teal,
               foregroundColor: Colors.black,
