@@ -46,6 +46,13 @@ class _ExitPageState extends State<ExitPage> {
                     shadowColor: WidgetStateProperty.all(Colors.purple),
                   ),
                   onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Laut ke Aana...hai Yeh hi Tumko!'),
+                        //behavior: SnackBarBehavior.floating,
+                        duration: Duration(seconds: 4),
+                      ),
+                    );
                     // Exit the app
                     Navigator.of(context).pop(); // Close the dialog
                   },
@@ -59,6 +66,13 @@ class _ExitPageState extends State<ExitPage> {
                     shadowColor: WidgetStateProperty.all(Colors.purple),
                   ),
                   onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Ke Dil Abhi Bharaa Nahi!'),
+                        behavior: SnackBarBehavior.floating,
+                        duration: Duration(seconds: 4),
+                      ),
+                    );
                     Navigator.of(context).pop(); // Close the dialog
                   },
                   child: Text('Cancel'),

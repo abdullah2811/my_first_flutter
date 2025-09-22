@@ -32,6 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
               });
             },
           ),
+          SizedBox(height: 20),
           TextField(
             decoration: InputDecoration(
               border: OutlineInputBorder(),
@@ -39,6 +40,7 @@ class _ProfilePageState extends State<ProfilePage> {
               hintText: 'Enter your email',
             ),
           ),
+          SizedBox(height: 20),
           TextField(
             obscureText: true,
             decoration: InputDecoration(

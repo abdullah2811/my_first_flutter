@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_first_flutter/data/constants.dart';
 import 'package:my_first_flutter/data/notifiers.dart';
 import 'package:my_first_flutter/views/pages/exit_page.dart';
 import 'package:my_first_flutter/views/pages/home_page.dart';
@@ -39,6 +40,13 @@ class WidgetTree extends StatelessWidget {
                 SizedBox(width: 30),
                 IconButton(
                   onPressed: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('Abhi Na Jaao Chhod Kar...!'),
+                        behavior: SnackBarBehavior.floating,
+                        duration: Duration(seconds: 2),
+                      ),
+                    );
                     Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -60,9 +68,14 @@ class WidgetTree extends StatelessWidget {
               shadowColor: Colors.purple,
               child: Column(
                 children: [
-                  DrawerHeader(child: Text('Flutter App Drawer')),
+                  DrawerHeader(
+                    child: Text(
+                      'Flutter App Drawer',
+                      style: MyTextStyles.subheadingBlack,
+                    ),
+                  ),
                   ListTile(
-                    leading: Icon(Icons.home),
+                    leading: Icon(Icons.home, color: Colors.black),
                     title: Text('Home'),
                     textColor: Colors.black,
                     onTap: () {
@@ -71,7 +84,7 @@ class WidgetTree extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.person),
+                    leading: Icon(Icons.person, color: Colors.black),
                     title: Text('Profile'),
                     textColor: Colors.black,
                     onTap: () {
@@ -80,7 +93,7 @@ class WidgetTree extends StatelessWidget {
                     },
                   ),
                   ListTile(
-                    leading: Icon(Icons.settings),
+                    leading: Icon(Icons.settings, color: Colors.black),
                     title: Text('Settings'),
                     textColor: Colors.black,
                     onTap: () {
